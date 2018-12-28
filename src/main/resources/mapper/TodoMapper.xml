@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzw.todo.mapper.TodoMapper">
+    <!-- 新增todo -->
+    <insert id="insertTodo" parameterType="todo">
+        INSERT INTO t_todo (things,createTime,uid)
+         VALUES(#{things},#{createTime},#{uid})
+    </insert>
+    <!-- 删除todo -->
+    <delete id="deleteTodo" parameterType="int" >
+        delete from t_todo where id={id}
+    </delete>
+    <!-- 查询todo列表 -->
+    <select id="selectTodos" parameterType="todo" resultType="todo">
+        select * from t_todo order by id desc limit #{id},#{uid}
+    </select>
+    <!-- 修改todo -->
+    <update id="updateTodo" parameterType="todo">
+        update t_todo set things=#{things},createTime=#{createTime} where id = #{id}
+    </update>
+</mapper>

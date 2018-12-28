@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzw.todo.mapper.UserMapper">
+    <!-- 注册 -->
+    <insert id="insertUser" parameterType="user">
+        INSERT INTO t_user (name,email,password,loginTime)
+         VALUES(#{name},#{email},#{password},#{loginTime})
+    </insert>
+    <!-- 登录 -->
+    <select id="selectUser" parameterType="user" resultType="user">
+        SELECT * FROM t_user WHERE email = #{email} AND password = #{password}
+    </select>
+</mapper>
